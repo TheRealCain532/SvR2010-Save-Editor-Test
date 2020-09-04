@@ -41,7 +41,7 @@ namespace test
         byte[] writeData(int index)
         {
             byte[] res = new byte[8];
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < 8; i++)
                 res[i] = Convert.ToByte(dataGridView1.Rows[i].Cells[index].Value);
             return res;
         }
@@ -56,7 +56,11 @@ namespace test
                     var dgv = (DataGridView)sender;
                     var cell = dgv?.Rows?[rowIdx.Value]?.Cells?[colIdx.Value]?.Value;
                     if (!string.IsNullOrEmpty(cell?.ToString()))
-                        p.Stats = writeData(e.ColumnIndex);
+                        switch (e.ColumnIndex)
+                        {
+                            case 0: p.Stats = writeData(0); break;
+                            case 1: p.MaxStats = writeData(1); break;
+                        }
                     };
                 };
             }
