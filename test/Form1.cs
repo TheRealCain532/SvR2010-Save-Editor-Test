@@ -10,15 +10,18 @@ namespace test
         public Form1()
         {
             InitializeComponent();
-        }
 
+        }
+        string fName;
         private void button1_Click(object sender, EventArgs e)
         {
             OpenFileDialog o = new OpenFileDialog();
             dataGridView1.Rows.Clear();
             if (o.ShowDialog() == DialogResult.OK)
             {
+                fName = o.FileName;
                 p = new Player(o.FileName);
+                foreach (var item in p.StarsName) comboBox1.Items.Add(item.Replace("_", ""));
                 for (int i = 0; i < p.Stats.Length; i++)
                     dataGridView1.Rows.Add($"{p.Stats[i]}", $"{p.MaxStats[i]}");
                 textBox1.Text = p.NameText;
@@ -64,6 +67,20 @@ namespace test
                     };
                 };
             }
+        void t(uint a)
+        {
+            dataGridView1.Rows.Clear();
+            p = new Player(fName, a);
+            for (int i = 0; i < p.Stats.Length; i++)
+                dataGridView1.Rows.Add($"{p.Stats[i]}", $"{p.MaxStats[i]}");
+            textBox1.Text = p.NameText;
+            textBox2.Text = p.HUDText;
+            textBox3.Text = p.Nickname;
         }
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            t(p.Stars[comboBox1.SelectedIndex]);
+        }
+    }
     }
 
