@@ -72,10 +72,7 @@ namespace test
             textBox2.Text = p.HUDText;
             textBox3.Text = p.Nickname;
         }
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            t(p.Stars[comboBox1.SelectedIndex]);
-        }
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)=> t(p.Stars[comboBox1.SelectedIndex]);
     }
     }
 
