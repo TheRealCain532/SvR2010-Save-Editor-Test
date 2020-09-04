@@ -25,23 +25,9 @@ namespace test
                 textBox2.Text = p.HUDText;
                 textBox3.Text = p.Nickname;
             }
+            f = true;
         }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            byte[] 
-                newStats = new byte[dataGridView1.Rows.Count],
-                newMaxStats = new byte[dataGridView1.Rows.Count];
-            for (int i = 0; i < newStats.Length; i++)
-                if (dataGridView1.Rows[i].Cells[0].Value != null)
-                {
-                    newStats[i] = Convert.ToByte(dataGridView1.Rows[i].Cells[0].Value);
-                    newMaxStats[i] = Convert.ToByte(dataGridView1.Rows[i].Cells[1].Value);
-                }
-            p.Stats = newStats;
-            p.MaxStats = newMaxStats;
-        }
-
+        bool f;
         private void textChange(object sender, EventArgs e)
         {
             TextBox a = sender as TextBox;
@@ -52,5 +38,28 @@ namespace test
                 case "textBox3": p.Nickname = textBox3.Text; break;
             }
         }
+        byte[] writeData(int index)
+        {
+            byte[] res = new byte[8];
+            for (int i = 0; i < 7; i++)
+                res[i] = Convert.ToByte(dataGridView1.Rows[i].Cells[index].Value);
+            return res;
+        }
+        private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (f)
+            {
+                int? rowIdx = e?.RowIndex;
+                int? colIdx = e?.ColumnIndex;
+                if (rowIdx.HasValue && colIdx.HasValue)
+                {
+                    var dgv = (DataGridView)sender;
+                    var cell = dgv?.Rows?[rowIdx.Value]?.Cells?[colIdx.Value]?.Value;
+                    if (!string.IsNullOrEmpty(cell?.ToString()))
+                        p.Stats = writeData(e.ColumnIndex);
+                    };
+                };
+            }
+        }
     }
-}
+
