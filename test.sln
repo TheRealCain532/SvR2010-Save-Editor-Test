@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "test", "test\test.csproj", "{F4F9757A-AE43-48DF-A08B-05C9E8AA700A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "svr2010 Save Editor Test", "test\svr2010 Save Editor Test.csproj", "{F4F9757A-AE43-48DF-A08B-05C9E8AA700A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -30,8 +30,6 @@
         {
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Stat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaxStat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button2 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -39,6 +37,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.Stat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaxStat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,6 +54,7 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Stat,
@@ -62,24 +63,8 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(323, 445);
+            this.dataGridView1.Size = new System.Drawing.Size(323, 387);
             this.dataGridView1.TabIndex = 1;
-            // 
-            // Stat
-            // 
-            this.Stat.HeaderText = "Stat";
-            this.Stat.MaxInputLength = 255;
-            this.Stat.MinimumWidth = 8;
-            this.Stat.Name = "Stat";
-            this.Stat.Width = 75;
-            // 
-            // MaxStat
-            // 
-            this.MaxStat.HeaderText = "Max Stat";
-            this.MaxStat.MaxInputLength = 255;
-            this.MaxStat.MinimumWidth = 8;
-            this.MaxStat.Name = "MaxStat";
-            this.MaxStat.Width = 75;
             // 
             // button2
             // 
@@ -97,6 +82,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(247, 26);
             this.textBox1.TabIndex = 3;
+            this.textBox1.TextChanged += new System.EventHandler(this.textChange);
             // 
             // textBox2
             // 
@@ -104,6 +90,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(247, 26);
             this.textBox2.TabIndex = 4;
+            this.textBox2.TextChanged += new System.EventHandler(this.textChange);
             // 
             // textBox3
             // 
@@ -111,6 +98,7 @@
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(247, 26);
             this.textBox3.TabIndex = 5;
+            this.textBox3.TextChanged += new System.EventHandler(this.textChange);
             // 
             // label1
             // 
@@ -139,6 +127,22 @@
             this.label3.TabIndex = 8;
             this.label3.Text = "Nickname";
             // 
+            // Stat
+            // 
+            this.Stat.HeaderText = "Stat";
+            this.Stat.MaxInputLength = 3;
+            this.Stat.MinimumWidth = 8;
+            this.Stat.Name = "Stat";
+            this.Stat.Width = 75;
+            // 
+            // MaxStat
+            // 
+            this.MaxStat.HeaderText = "Max Stat";
+            this.MaxStat.MaxInputLength = 3;
+            this.MaxStat.MinimumWidth = 8;
+            this.MaxStat.Name = "MaxStat";
+            this.MaxStat.Width = 75;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -166,8 +170,6 @@
 
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Stat;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaxStat;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
@@ -175,6 +177,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Stat;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaxStat;
     }
 }
 

@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using svr2010;
 
@@ -27,7 +20,7 @@ namespace test
             {
                 p = new Player(o.FileName);
                 for (int i = 0; i < p.Stats.Length; i++)
-                    dataGridView1.Rows.Add(p.Stats[i].ToString(), p.MaxStats[i].ToString());
+                    dataGridView1.Rows.Add($"{p.Stats[i]}", $"{p.MaxStats[i]}");
                 textBox1.Text = p.NameText;
                 textBox2.Text = p.HUDText;
                 textBox3.Text = p.Nickname;
@@ -37,8 +30,8 @@ namespace test
         private void button2_Click(object sender, EventArgs e)
         {
             byte[] 
-                newStats = new byte[dataGridView1.Rows.Count-1],
-                newMaxStats = new byte[dataGridView1.Rows.Count - 1];
+                newStats = new byte[dataGridView1.Rows.Count],
+                newMaxStats = new byte[dataGridView1.Rows.Count];
             for (int i = 0; i < newStats.Length; i++)
                 if (dataGridView1.Rows[i].Cells[0].Value != null)
                 {
@@ -47,9 +40,17 @@ namespace test
                 }
             p.Stats = newStats;
             p.MaxStats = newMaxStats;
-            p.NameText = textBox1.Text;
-            p.HUDText = textBox2.Text;
-            p.Nickname = textBox3.Text;
+        }
+
+        private void textChange(object sender, EventArgs e)
+        {
+            TextBox a = sender as TextBox;
+            switch (a.Name)
+            {
+                case "textBox1": p.NameText = textBox1.Text; break;
+                case "textBox2": p.HUDText = textBox2.Text; break;
+                case "textBox3": p.Nickname = textBox3.Text; break;
+            }
         }
     }
 }
